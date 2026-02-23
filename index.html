@@ -1,12 +1,167 @@
-<a href="https://www.instagram.com/kt_mns_yuseng/" target="_blank">
-  <button style="
-    width:90%;
-    padding:16px;
-    font-size:18px;
-    background:#E1306C;
-    color:white;
-    border:none;
-    border-radius:12px;">
-    인스타그램 바로가기
-  </button>
-</a>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>인스타그램 바로가기</title>
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#121c33;
+      --text:#ffffff;
+      --sub:#b7c2df;
+      --accent:#E1306C;
+      --border:rgba(255,255,255,.12);
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; margin:0; }
+    body{
+      font-family: system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background: radial-gradient(1200px 800px at 50% -10%, rgba(225,48,108,.25), transparent 55%),
+                  radial-gradient(900px 600px at 80% 10%, rgba(78,161,255,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 16px calc(24px + env(safe-area-inset-bottom));
+    }
+    .wrap{
+      width:min(520px, 100%);
+      text-align:center;
+    }
+    .brand{
+      font-weight:800;
+      letter-spacing:-0.3px;
+      font-size:20px;
+      margin-bottom:6px;
+    }
+    .desc{
+      color:var(--sub);
+      font-size:14px;
+      line-height:1.45;
+      margin:0 0 18px;
+    }
+    .bigBtn{
+      width:100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(225,48,108,.95), rgba(225,48,108,.65));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:18px;
+      text-decoration:none;
+      color:white;
+      -webkit-tap-highlight-color: transparent;
+      user-select:none;
+    }
+    .bigBtn:active{ transform: translateY(1px); }
+    .btnText{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      align-items:center;
+    }
+    .btnText .t1{
+      font-size:22px;
+      font-weight:900;
+      letter-spacing:-0.4px;
+    }
+    .btnText .t2{
+      font-size:13px;
+      opacity:.92;
+    }
+    .hint{
+      margin-top:14px;
+      background: rgba(18,28,51,.7);
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:12px 14px;
+      color:var(--sub);
+      font-size:13px;
+      line-height:1.45;
+      text-align:left;
+    }
+    .row{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+    }
+    .small{
+      flex:1;
+      background: rgba(18,28,51,.7);
+      border:1px solid var(--border);
+      border-radius: 14px;
+      padding:14px 12px;
+      color:var(--text);
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+    }
+    .small span{
+      color:var(--sub);
+      font-weight:700;
+      margin-left:6px;
+      font-size:12px;
+    }
+    .footer{
+      margin-top:14px;
+      color: rgba(183,194,223,.85);
+      font-size:12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">KT플라자 인스타그램</div>
+    <p class="desc">
+      네이버 앱에서는 계정 자동이동이 가끔 실패합니다.<br/>
+      아래 버튼을 눌러 <b>크롬에서 열기</b>로 전환하면 안정적으로 이동돼요.
+    </p>
+
+    <!-- ✅ 핵심: 새 창으로 열리게 하여( target="_blank" ) 네이버 내부브라우저를 끊어냄 -->
+    <a class="bigBtn" id="goInsta" href="#" target="_blank" rel="noopener">
+      <div class="btnText">
+        <div class="t1">인스타 바로가기</div>
+        <div class="t2">크롬에서 열려야 자동이동이 잘 됩니다</div>
+      </div>
+    </a>
+
+    <div class="hint">
+      ✅ 팁: 버튼을 눌렀는데도 인스타 홈으로만 열리면<br/>
+      상단 메뉴(⋮)에서 <b>“기본 브라우저로 열기”</b>를 한 번만 선택해 주세요.
+    </div>
+
+    <div class="footer">© KT Plaza</div>
+  </main>
+
+  <script>
+    // ✅ 여기만 너의 인스타 아이디로 바꿔줘
+    const IG_USERNAME = "kt_mns_yuseng";
+
+    // 인스타 프로필 URL (www + trailing slash 권장)
+    const IG_URL = `https://www.instagram.com/${IG_USERNAME}/`;
+
+    // 버튼 링크 세팅
+    document.getElementById("goInsta").href = IG_URL;
+
+    /**
+     * (선택) 자동 시도: 페이지 들어오자마자 새창으로 인스타 열기
+     * - 일부 환경에서 팝업 차단될 수 있어 기본은 꺼두는 걸 추천
+     * - 원하면 아래 주석을 해제
+     */
+    // window.addEventListener("load", () => {
+    //   window.open(IG_URL, "_blank", "noopener");
+    // });
+  </script>
+</body>
+</html>
